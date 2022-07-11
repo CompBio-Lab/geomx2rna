@@ -6,7 +6,7 @@
 module load git
 cd /arc/project/st-singha53/singha53/
 git clone https://github.com/CompBio-Lab/geomx2rna.git
-
+cd geomx2rna/
 ```
 
 ## 2) jupyter notebook singularity image setup
