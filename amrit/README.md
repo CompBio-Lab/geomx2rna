@@ -123,5 +123,14 @@ ssh -N -L 8888:se444:52896 singha53@sockeye.arc.ubc.ca
   
 ```
 
+## copy data to scratch folder
+
+- from local machine navigate to where the data is
+```
+scp -r geomx_data singha53@dtn.sockeye.arc.ubc.ca:/scratch/st-singha53-1/singha53/geomx2rna/amrit/my_jupyter/
+```
+
+
+
 References
 1. https://confluence.it.ubc.ca/display/UARC/Jupyter+Notebooks+with+Singularity
