@@ -35,8 +35,8 @@ sh install_torch.sh
 1. Create a job directory in /scratch for your personal Jupyter Notebooks job(s)
   
 ```
-mkdir /scratch/st-singha53-1/singha53/geomx2rna
-cd /scratch/st-singha53-1/singha53/geomx2rna
+mkdir /scratch/st-singha53-1/singha53/geomx2rna/amrit/my_jupyter
+cd /scratch/st-singha53-1/singha53/geomx2rna/amrit/my_jupyter
 ```
 
 2. create jupyter-datascience.pbs
@@ -58,7 +58,7 @@ vi jupyter-datascience.pbs
 ################################################################################
 
 # set path variables
-SCRATCH_PATH="scratch/st-singha53-1/singha53/geomx2rna/amrit/my_jupyter"
+SCRATCH_PATH="/scratch/st-singha53-1/singha53/geomx2rna/amrit/my_jupyter"
 PROJECT_PATH="/arc/project/st-singha53-1/singha53/geomx2rna/amrit/jupyter/"
 
 # Change directory into the job dir
