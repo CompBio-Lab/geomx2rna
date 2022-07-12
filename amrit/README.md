@@ -42,6 +42,9 @@ conda install -y pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch --pr
 
 # 5. Convert the conda environment to an IPython Kernel and install it for your account, suitable for Jupyter Notebooks
 conda run --prefix /arc/project/st-singha53-1/singha53/geomx2rna/amrit/jupyter/myenv python -m ipykernel install --user --name myenv
+
+# 6. exit out of singularity image
+exit
 ```
 
 <st-alloc-1> = st-singha53-1
