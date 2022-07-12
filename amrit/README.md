@@ -31,7 +31,7 @@ module load gcc singularity
 singularity shell --home /scratch/st-singha53-1/singha53/geomx2rna/amrit/my_jupyter /arc/project/st-singha53-1/singha53/geomx2rna/amrit/jupyter/jupyter-datascience.sif
 
 # 2. Create or clone a conda environment
-conda create --prefix /arc/project/st-singha53-1/singha53/geomx2rna/amrit/jupyter/myenv
+conda create --prefix /arc/project/st-singha53-1/singha53/geomx2rna/amrit/jupyter/myenv python=3.7
 
 # 3. Add the ipykernel module to the environment (required)
 conda install -y ipykernel --prefix /arc/project/st-singha53-1/singha53/geomx2rna/amrit/jupyter/myenv
