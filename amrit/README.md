@@ -120,7 +120,7 @@ qdel ${PBS_JOBID}
 END
 
 # Execute jupyter within the jupyter/datascience-notebook container
-singularity exec \
+singularity exec --nv \
   --home $SCRATCH_PATH \
   $PROJECT_PATH/jupyter-datascience.sif \
   jupyter notebook --no-browser --port=${PORT} --ip=0.0.0.0 --notebook-dir=$PBS_O_WORKDIR
