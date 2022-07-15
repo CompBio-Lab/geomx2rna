@@ -67,7 +67,7 @@ vi jupyter-datascience.pbs
 3. hit 'i' then enter the following:
   
 ```
-#PBS -l walltime=03:00:00,select=1:ncpus=12:ompthreads=12:ngpus=4:mem=64gb
+#PBS -l walltime=03:00:00,select=1:ncpus=12:ngpus=1:mem=64gb
 #PBS -N geomx
 #PBS -A st-singha53-1-gpu
 #PBS -m abe
