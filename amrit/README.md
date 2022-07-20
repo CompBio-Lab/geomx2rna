@@ -52,7 +52,7 @@ exit
 ## install additional packages to environment (e.g. matplotlib)
 
 ```
-conda activate myenv/
+source activate myenv/
 conda install -c conda-forge matplotlib
 conda deactivate
 ```
