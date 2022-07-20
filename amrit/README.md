@@ -49,6 +49,13 @@ exit
 
 <st-alloc-1> = st-singha53-1
 
+## install additional packages to environment (e.g. matplotlib)
+
+```
+conda activate myenv/
+conda install -c conda-forge matplotlib
+conda deactivate
+```
   
 ## 3) run jupyter notebook
 
