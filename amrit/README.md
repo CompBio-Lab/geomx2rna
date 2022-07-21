@@ -52,8 +52,10 @@ exit
 ## install additional packages to environment (e.g. matplotlib)
 
 ```
+cd /arc/project/st-singha53-1/singha53/geomx2rna/amrit/jupyter/
 source activate myenv/
 conda install -c conda-forge matplotlib
+conda install captum -c pytorch
 conda deactivate
 ```
   
