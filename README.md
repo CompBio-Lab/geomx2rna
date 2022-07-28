@@ -148,6 +148,7 @@ vi jupyter-datascience.pbs
 # set path variables
 SCRATCH_PATH="/scratch/st-allocation-code/$USER/geomx2rna"
 PROJECT_PATH="/arc/project/st-allocation-code/$USER/geomx2rna"
+DATA="/scratch/st-allocation-code/datasets/geomx/dkd/geomx_pngs"
 
 # Change directory into the job dir
 cd $PBS_O_WORKDIR
@@ -190,6 +191,7 @@ END
 # Execute jupyter within the jupyter/datascience-notebook container
 singularity exec --nv \
   --home $SCRATCH_PATH \
+  --bind $DATA \
   $PROJECT_PATH/jupyter-datascience.sif \
   jupyter notebook --no-browser --port=${PORT} --ip=0.0.0.0 --notebook-dir=$PBS_O_WORKDIR
 
@@ -212,6 +214,7 @@ ssh -N -L 8888:${HOSTNAME}:${PORT} ${USER}@sockeye.arc.ubc.ca
     
 
 ## Copying data
+* data can be found [here](http://nanostring-public-share.s3-website-us-west-2.amazonaws.com/GeoScriptHub/)
 
 - from local machine navigate to where the data is
 ```
