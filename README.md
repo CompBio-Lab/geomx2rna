@@ -56,13 +56,14 @@ cd geomx2rna/
 * clone repo to project and scratch folders
 ```
 module load git
-mkdir /scratch/st-allocation-code/$USER
-cd /arc/project/st-allocation-code/$USER/
+ALLOC=st-allocation-code
+mkdir /arc/project/$ALLOC/$USER/
+cd /arc/project/$ALLOC/$USER/
 git clone https://github.com/CompBio-Lab/geomx2rna.git
 cd geomx2rna/
 
-mkdir /scratch/st-allocation-code/$USER
-cd /scratch/st-allocation-code/$USER
+mkdir /scratch/$ALLOC/$USER
+cd /scratch/$ALLOC/$USER
 git clone https://github.com/CompBio-Lab/geomx2rna.git
 cd geomx2rna/
 ```
@@ -71,17 +72,19 @@ cd geomx2rna/
 * $USER: UBC Campus wide login
 
 ## Jupyter notebook singularity image setup on HPC (UBC ARC Sockeye)
-* st-allocation-code: Sockeye allocation code
+* $ALLOC: Sockeye allocation code
 * $USER: UBC Campus wide login
 
 
 Convert the following set of steps into reproducible workflow:
 1. move to project location
 ```
-cd /arc/project/st-allocation-code/$USER/geomx2rna/
+cd /arc/project/$ALLOC/$USER/geomx2rna/
 ```
 
 2. pull jupyter notebook by running jupyter_singularity.sh
+
+*updat
 
 ```
 sh jupyter_singularity.sh
@@ -94,20 +97,20 @@ sh jupyter_singularity.sh
 module load gcc singularity
 
 # 1. Launch a shell with the jupyter/datascience-notebook container on a Sockeye login node
-singularity shell --home /scratch/st-allocation-code/$USER/geomx2rna/ /arc/project/st-allocation-code/$USER/geomx2rna/jupyter-datascience.sif
+singularity shell --home /scratch/$ALLOC/$USER/geomx2rna/ /arc/project/$ALLOC/$USER/geomx2rna/jupyter-datascience.sif
 
 # 2. Create or clone a conda environment
-conda create --prefix /arc/project/st-allocation-code/$USER/geomx2rna/myenv python=3.7
+conda create --prefix /arc/project/$ALLOC/$USER/geomx2rna/myenv python=3.7
 
 # 3. Add the ipykernel module to the environment (required)
-conda install -y ipykernel --prefix /arc/project/st-allocation-code/$USER/geomx2rna/myenv
+conda install -y ipykernel --prefix /arc/project/$ALLOC/$USER/geomx2rna/myenv
 
 # 4. Add all desired packages/modules to the environment
 # - torch
-conda install -y pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch --prefix /arc/project/st-allocation-code/$USER/geomx2rna/myenv
+conda install -y pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch --prefix /arc/project/$ALLOC/$USER/geomx2rna/myenv
 
 # 5. Convert the conda environment to an IPython Kernel and install it for your account, suitable for Jupyter Notebooks
-conda run --prefix /arc/project/st-allocation-code/$USER/geomx2rna/myenv python -m ipykernel install --user --name myenv
+conda run --prefix /arc/project/$ALLOC/$USER/geomx2rna/myenv python -m ipykernel install --user --name myenv
 
 # 6. exit out of singularity image
 exit
@@ -118,7 +121,7 @@ exit
 ## install additional packages to environment (e.g. matplotlib)
 
 ```
-cd /arc/project/st-allocation-code/$USER/geomx2rna/
+cd /arc/project/$ALLOC/$USER/geomx2rna/
 source activate myenv/
 conda install -c conda-forge matplotlib
 conda install captum -c pytorch
@@ -130,8 +133,8 @@ conda deactivate
 1. Create a job directory in /scratch for your personal Jupyter Notebooks job(s)
   
 ```
-mkdir /scratch/st-allocation-code/$USER/geomx2rna/
-cd /scratch/st-allocation-code/$USER/geomx2rna/
+mkdir /scratch/$ALLOC/$USER/geomx2rna/
+cd /scratch/$ALLOC/$USER/geomx2rna/
 ```
 
 2. create jupyter-datascience.pbs
