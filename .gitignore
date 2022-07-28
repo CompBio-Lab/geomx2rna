@@ -10,3 +10,4 @@ geomx_job.pbs
 connection*
 error.txt
 output.txt
+.jupyter/
