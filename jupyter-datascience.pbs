@@ -1,6 +1,6 @@
 #PBS -l walltime=03:00:00,select=1:ncpus=12:ngpus=1:mem=64gb
 #PBS -N geomx
-#PBS -A st-allocation-code-gpu
+#PBS -A st-$ALLOC-gpu
 #PBS -m abe
 #PBS -M your.email@ubc.ca
 #PBS -e error.txt
@@ -9,9 +9,9 @@
 ################################################################################
 
 # set path variables
-SCRATCH_PATH="/scratch/st-allocation-code/$USER/geomx2rna"
-PROJECT_PATH="/arc/project/st-allocation-code/$USER/geomx2rna"
-DATA="/scratch/st-allocation-code/datasets/geomx/dkd/geomx_pngs"
+SCRATCH_PATH="/scratch/$ALLOC/$USER/geomx2rna"
+PROJECT_PATH="/arc/project/$ALLOC/$USER/geomx2rna"
+DATA="/scratch/$ALLOC/datasets/geomx/dkd/geomx_pngs"
 
 # Change directory into the job dir
 cd $PBS_O_WORKDIR
