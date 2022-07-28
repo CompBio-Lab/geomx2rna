@@ -6,3 +6,5 @@ myenv
 .conda/
 .local/
 .ipython/
+geomx_job.pbs
+connection*
