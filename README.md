@@ -53,9 +53,16 @@ cd geomx2rna/
 ```
 
 ### repo setup on HPC (UBC ARC Sockeye)
+* clone repo to project and scratch folders
 ```
 module load git
+mkdir /scratch/st-allocation-code/$USER
 cd /arc/project/st-allocation-code/$USER/
+git clone https://github.com/CompBio-Lab/geomx2rna.git
+cd geomx2rna/
+
+mkdir /scratch/st-allocation-code/$USER
+cd /scratch/st-allocation-code/$USER
 git clone https://github.com/CompBio-Lab/geomx2rna.git
 cd geomx2rna/
 ```

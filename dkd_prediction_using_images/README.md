@@ -7,6 +7,7 @@
   - [Data](#data)
     - [Copy data from local machine to HPC Sockeye](#copy-data-from-local-machine-to-hpc-sockeye)
     - [Unpack data](#unpack-data)
+  - [Fetch singularity file and install required packages](#fetch-singularity-file-and-install-required-packages)
   - [Download Pre-trained models](#download-pre-trained-models)
   - [Run jupyter notebook](#run-jupyter-notebook)
   - [Using CLAM:](#using-clam)
@@ -31,6 +32,9 @@ scp -r geomx_pngs cwl@dtn.sockeye.arc.ubc.ca:/scratch/st-allocation-code/$USER/d
 unzip geomx_pngs/
 ```
 
+## Fetch singularity file and install required packages
+* see instructions [here](https://github.com/CompBio-Lab/geomx2rna/blob/main/README.md)
+
 ## Download Pre-trained models
 
 * move to scratch location
@@ -53,6 +57,7 @@ wget -c https://download.pytorch.org/models/alexnet-owt-4df8aa71.pth
 ```
 
 ## Run jupyter notebook
+* see instructions [here](https://github.com/CompBio-Lab/geomx2rna/blob/main/README.md)
 
 ```
 qsub jupyter-datascience.pbs
