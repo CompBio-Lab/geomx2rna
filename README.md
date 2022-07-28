@@ -102,9 +102,12 @@ conda create --prefix /arc/project/$ALLOC/$USER/geomx2rna/myenv python=3.7
 # 3. Add the ipykernel module to the environment (required)
 conda install -y ipykernel --prefix /arc/project/$ALLOC/$USER/geomx2rna/myenv
 
-# 4. Add all desired packages/modules to the environment
+# 4a. Add all desired packages/modules to the environment
 # - torch
 conda install -y pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch --prefix /arc/project/$ALLOC/$USER/geomx2rna/myenv
+
+# 4b. downgrade Pillow so torchvision works!
+conda install pillow=6.2.1
 
 # 5. Convert the conda environment to an IPython Kernel and install it for your account, suitable for Jupyter Notebooks
 conda run --prefix /arc/project/$ALLOC/$USER/geomx2rna/myenv python -m ipykernel install --user --name myenv
