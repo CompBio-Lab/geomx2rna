@@ -1,5 +1,4 @@
 # pull singularity jupyter notebook
-mkdir /arc/project/$ALLOC/$USER/geomx2rna/
 module load gcc
 module load singularity
 cd /arc/project/$ALLOC/$USER/geomx2rna/

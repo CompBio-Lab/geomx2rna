@@ -24,7 +24,7 @@
 - copy  to HPC by copying ROI images from ROI reports to sockeye
 
 ```
-scp -r geomx_pngs cwl@dtn.sockeye.arc.ubc.ca:/scratch/st-allocation-code/datasets/geomx/dkd/
+scp -r geomx_pngs cwl@dtn.sockeye.arc.ubc.ca:/scratch/$ALLOC/datasets/geomx/dkd/
 ```
 
 ### Unpack data
@@ -40,7 +40,7 @@ unzip geomx_pngs/
 * move to scratch location
 
 ```
-cd /scratch/st-allocation-code/$USER/geomx2rna
+cd /scratch/$ALLOC/$USER/geomx2rna
 ```
 
 * download AlexNet
