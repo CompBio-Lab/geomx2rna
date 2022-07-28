@@ -139,7 +139,7 @@ vi geomx_job.pbs
   
 3. hit 'i' then enter the following:
 
-* update allocation code and email in PBS header
+* update allocation code (st-allocation-code) and email (your_email@domain) in PBS header
 * check if data path exists
 
 1. Submit a job script
