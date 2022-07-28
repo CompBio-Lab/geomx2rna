@@ -2,3 +2,7 @@ geomx_pngs/
 .DS_Store
 jupyter-datascience.sif
 myenv
+.bash_history
+.conda/
+.local/
+.ipython/
