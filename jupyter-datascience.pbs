@@ -1,8 +1,8 @@
 #PBS -l walltime=03:00:00,select=1:ncpus=12:ngpus=1:mem=64gb
 #PBS -N geomx
-#PBS -A st-$ALLOC-gpu
+#PBS -A st-allocation-code-gpu
 #PBS -m abe
-#PBS -M your.email@ubc.ca
+#PBS -M your_email@domain
 #PBS -e error.txt
 #PBS -o output.txt
 
