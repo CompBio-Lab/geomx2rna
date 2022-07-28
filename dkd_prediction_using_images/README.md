@@ -24,7 +24,7 @@
 - copy  to HPC by copying ROI images from ROI reports to sockeye
 
 ```
-scp -r geomx_pngs cwl@dtn.sockeye.arc.ubc.ca:/scratch/st-allocation-code/$USER/datasets/geomx/dkd/
+scp -r geomx_pngs cwl@dtn.sockeye.arc.ubc.ca:/scratch/st-allocation-code/datasets/geomx/dkd/
 ```
 
 ### Unpack data
