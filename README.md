@@ -15,7 +15,6 @@ P. Thangarajah*, G. Hothi*, K. Korolek*, A. Singh 
 - [Jupyter notebook singularity image setup on HPC (UBC ARC Sockeye)](#jupyter-notebook-singularity-image-setup-on-hpc-ubc-arc-sockeye)
 - [install additional packages to environment (e.g. matplotlib)](#install-additional-packages-to-environment-eg-matplotlib)
 - [Run jupyter notebook](#run-jupyter-notebook)
-- [Copying data](#copying-data)
 - [Bugs and feature requests](#bugs-and-feature-requests)
 - [Contributing](#contributing)
 - [Copyright and license](#copyright-and-license)
@@ -56,7 +55,7 @@ cd geomx2rna/
 * clone repo to project and scratch folders
 ```
 module load git
-ALLOC=st-allocation-code
+export ALLOC=st-allocation-code
 mkdir /arc/project/$ALLOC/$USER/
 cd /arc/project/$ALLOC/$USER/
 git clone https://github.com/CompBio-Lab/geomx2rna.git
@@ -68,8 +67,8 @@ git clone https://github.com/CompBio-Lab/geomx2rna.git
 cd geomx2rna/
 ```
 
-* st-allocation-code: Sockeye allocation code
-* $USER: UBC Campus wide login
+* $ALLOC: Sockeye allocation code
+* $USER: UBC Campus wide login (should be already set)
 
 ## Jupyter notebook singularity image setup on HPC (UBC ARC Sockeye)
 * $ALLOC: Sockeye allocation code
@@ -84,13 +83,11 @@ cd /arc/project/$ALLOC/$USER/geomx2rna/
 
 2. pull jupyter notebook by running jupyter_singularity.sh
 
-*updat
-
 ```
 sh jupyter_singularity.sh
 ```
 
-3. add packages to singularity image
+1. add packages to singularity image (run the following line by line)
 
 ```
 # load dependencies
@@ -116,8 +113,6 @@ conda run --prefix /arc/project/$ALLOC/$USER/geomx2rna/myenv python -m ipykernel
 exit
 ```
 
-<st-alloc-1> = st-singha53-1
-
 ## install additional packages to environment (e.g. matplotlib)
 
 ```
@@ -133,102 +128,33 @@ conda deactivate
 1. Create a job directory in /scratch for your personal Jupyter Notebooks job(s)
   
 ```
-mkdir /scratch/$ALLOC/$USER/geomx2rna/
 cd /scratch/$ALLOC/$USER/geomx2rna/
 ```
 
-2. create jupyter-datascience.pbs
+2. create job script using template: jupyter-datascience.pbs
 ```
-vi jupyter-datascience.pbs
+cp jupyter-datascience.pbs geomx_job.pbs
+vi geomx_job.pbs
 ```
   
 3. hit 'i' then enter the following:
-  
+
+* update allocation code and email in PBS header
+* check if data path exists
+
+1. Submit a job script
 ```
-#PBS -l walltime=03:00:00,select=1:ncpus=12:ngpus=1:mem=64gb
-#PBS -N geomx
-#PBS -A st-allocation-code-gpu
-#PBS -m abe
-#PBS -M your.email@ubc.ca
-#PBS -e error.txt
-#PBS -o output.txt
-
-################################################################################
-
-# set path variables
-SCRATCH_PATH="/scratch/st-allocation-code/$USER/geomx2rna"
-PROJECT_PATH="/arc/project/st-allocation-code/$USER/geomx2rna"
-DATA="/scratch/st-allocation-code/datasets/geomx/dkd/geomx_pngs"
-
-# Change directory into the job dir
-cd $PBS_O_WORKDIR
-
-# Load software environment
-module load gcc
-module load singularity
-
-# Set RANDFILE location to writeable dir
-export RANDFILE=$TMPDIR/.rnd
-
-# Generate a unique token (password) for Jupyter Notebooks
-export SINGULARITYENV_JUPYTER_TOKEN=$(openssl rand -base64 15)
-
-# Find a unique port for Jupyter Notebooks to listen on
-readonly PORT=$(python -c 'import socket; s=socket.socket(); s.bind(("", 0)); print(s.getsockname()[1]); s.close()')
-
-# Print connection details to file
-cat > connection_${PBS_JOBID}.txt <<END
- 
-1. Create an SSH tunnel to Jupyter Notebooks from your local workstation using the following command:
- 
-ssh -N -L 8888:${HOSTNAME}:${PORT} ${USER}@sockeye.arc.ubc.ca
- 
-2. Point your web browser to http://localhost:8888
- 
-3. Login to Jupyter Notebooks using the following token (password):
- 
-${SINGULARITYENV_JUPYTER_TOKEN}
- 
-When done using Jupyter Notebooks, terminate the job by:
- 
-1. Quit or Logout of Jupyter Notebooks
-2. Issue the following command on the login node (if you did Logout instead of Quit):
- 
-qdel ${PBS_JOBID}
- 
-END
-
-# Execute jupyter within the jupyter/datascience-notebook container
-singularity exec --nv \
-  --home $SCRATCH_PATH \
-  --bind $DATA \
-  $PROJECT_PATH/jupyter-datascience.sif \
-  jupyter notebook --no-browser --port=${PORT} --ip=0.0.0.0 --notebook-dir=$PBS_O_WORKDIR
-
-```
-  
-2. Submit a job using the jupyter-datascience.pbs
-```
-qsub jupyter-datascience.pbs
+qsub geomx_job.pbs
 ```
  - this creates a connection file
   
   
 3. open another terminal window (since the other one is logged into sockeye)
-- copy ssh instructions from freshly producted connection file
+- copy ssh instructions from the freshly producted connection file
 
 example 
 ```
 ssh -N -L 8888:${HOSTNAME}:${PORT} ${USER}@sockeye.arc.ubc.ca
-```
-    
-
-## Copying data
-* data can be found [here](http://nanostring-public-share.s3-website-us-west-2.amazonaws.com/GeoScriptHub/)
-
-- from local machine navigate to where the data is
-```
-scp -r geomx_data cwl@dtn.sockeye.arc.ubc.ca:/scratch/st-allocation-code/$USER/geomx2rna/
 ```
 
 ## Bugs and feature requests
