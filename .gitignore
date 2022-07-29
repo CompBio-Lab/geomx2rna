@@ -16,3 +16,4 @@ output.txt
 dkd_prediction_using_images/.ipynb_checkpoints/
 dkd_prediction_using_images/model.pt
 alexnet-owt-4df8aa71.pth
+.jupyter/
