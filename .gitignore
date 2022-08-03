@@ -8,3 +8,12 @@ myenv
 .ipython/
 geomx_job.pbs
 connection*
+error.txt
+output.txt
+.fontconfig/
+.jupyter/
+.python_history
+dkd_prediction_using_images/.ipynb_checkpoints/
+dkd_prediction_using_images/model.pt
+alexnet-owt-4df8aa71.pth
+.jupyter/

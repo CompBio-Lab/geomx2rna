@@ -104,7 +104,8 @@ conda install -y ipykernel --prefix /arc/project/$ALLOC/$USER/geomx2rna/myenv
 
 # 4. Add all desired packages/modules to the environment
 # - torch
-conda install -y pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch --prefix /arc/project/$ALLOC/$USER/geomx2rna/myenv
+conda install -y pytorch torchvision torchaudio captum cudatoolkit=10.2 -c pytorch --prefix /arc/project/$ALLOC/$USER/geomx2rna/myenv
+
 
 # 5. Convert the conda environment to an IPython Kernel and install it for your account, suitable for Jupyter Notebooks
 conda run --prefix /arc/project/$ALLOC/$USER/geomx2rna/myenv python -m ipykernel install --user --name myenv
@@ -119,6 +120,7 @@ exit
 cd /arc/project/$ALLOC/$USER/geomx2rna/
 source activate myenv/
 conda install -c conda-forge matplotlib
+pip install torch==1.9.0 torchvision==0.10.0 --extra-index-url https://download.pytorch.org/whl/cu102
 conda install captum -c pytorch
 conda deactivate
 ```
@@ -139,7 +141,7 @@ vi geomx_job.pbs
   
 3. hit 'i' then enter the following:
 
-* update allocation code and email in PBS header
+* update allocation code (st-allocation-code) and email (your_email@domain) in PBS header
 * check if data path exists
 
 1. Submit a job script
