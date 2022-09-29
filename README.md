@@ -94,7 +94,7 @@ sh jupyter_singularity.sh
 module load gcc singularity
 
 # 1. Launch a shell with the jupyter/datascience-notebook container on a Sockeye login node
-singularity shell --home /scratch/$ALLOC/$USER/geomx2rna/ /arc/project/$ALLOC/$USER/geomx2rna/jupyter-datascience.sif
+singularity shell --home /scratch/$ALLOC/$USER/geomx2rna/ --env XDG_CACHE_HOME=/scratch/$ALLOC/$USER/geomx2rna/ /arc/project/$ALLOC/$USER/geomx2rna/jupyter-datascience.sif
 
 # 2. Create or clone a conda environment
 conda create --prefix /arc/project/$ALLOC/$USER/geomx2rna/myenv python=3.7
