@@ -41,6 +41,7 @@ Open-source deep learning models effectively classify DKD from healthy tissue pa
 * assume git is install, check using:
 
 ```
+module load git
 git --version
 ```
 
